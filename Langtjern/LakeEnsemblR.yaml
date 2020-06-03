@@ -40,7 +40,7 @@ inflows:
    file: LakeEnsemblR_inflow_standard.csv       # file with inflow data, with column headers according to LakeEnsemblR vocabulary [if none use NULL]
    mass-balance: false                          # enforce pseudo mass-balance by adding an artifical outflow for every inflow
 output:
-   file: ensemble_output.nc                    # path of output file, excluding extension
+   file: ensemble_output                    # path of output file, excluding extension
    format: netcdf                              # format [text, netcdf; default=netcdf]
    depths: 0.5                                 # depths to extract output [m; default=0.5]
    compression: 4                              # Set to an integer between 1 (least compression) and 9 (most compression), this enables compression for the variable as it is written to the file [default = 4].
@@ -54,17 +54,17 @@ biogeochemistry:                               # Not implemented yet
    use: false
 model_parameters:
    FLake:                                      # FLake specific parameters
-      fetch_lk: 2.0E+03                        # Typical wind fetch [m]
+      fetch_lk: 850                        # Typical wind fetch [m]
       sediments_on: true                       # false if the sediments layer is switched off
    GLM:                                        # GLM specific parameters
-      bsn_len: 3678                            # Length of the lake basin, at crest height [m; default=NULL]
-      bsn_wid: 944                             # Width of the lake basin, at crest height [m; default=NULL]
+      bsn_len: 850                            # Length of the lake basin, at crest height [m; default=NULL]
+      bsn_wid: 300                             # Width of the lake basin, at crest height [m; default=NULL]
    GOTM:                                       # GOTM specific parameters
       k_min: 3.6E-6                            # minimum turbulent kinetic energy [m^2/s^2; min=0.0; default=1.00000000E-10]
    Simstrat:                                   # Simstrat specific parameters
       a_seiche: 0.001                          # Fraction of wind energy which goes into seiche energy [-]
    MyLake:                                     # MyLake specific parameters
-      Phys.par/C_shelter: 0.15				     # wind sheltering coefficient [min=0; max=1; default=NULL to calculate C_shelter=1.0-exp(-0.3*SA)]
+      Phys.par/C_shelter: 0.15                   # wind sheltering coefficient [min=0; max=1; default=NULL to calculate C_shelter=1.0-exp(-0.3*SA)]
 calibration:                                   # Calibration section                                   # Calibration section
    met:                                        # Meteo scaling parameter
       wind_speed:                              # Wind speed scaling
@@ -88,7 +88,7 @@ calibration:                                   # Calibration section            
         lower: 0.14                            # lower bound for parameter
         upper: 0.16                            # upper bound for parameter
         initial: 0.15                          # initial value for parameter
-        log: false                             # log transform scaling factor	
+        log: false                             # log transform scaling factor   
    GOTM:                                    # GOTM specific parameters
       turb_param/k_min:
          lower: 5E-4                           # lower bound for parameter
