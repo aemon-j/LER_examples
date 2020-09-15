@@ -7,8 +7,8 @@ location:
    hypsograph: LER_langtjern_bathymetry.csv     # hypsograph [csv file]
    init_depth: 9                                # initial height of lake surface relative to the bottom [m]
 time:
-   start: 2014-05-24 00:00:00 # start date and time [yyyy-mm-dd HH:MM:SS]
-   stop: 2017-06-24 00:00:00 # stop date and time [yyyy-mm-dd HH:MM:SS]
+   start: 2014-05-24 00:00:00                   # start date and time [yyyy-mm-dd HH:MM:SS]
+   stop: 2017-06-24 00:00:00                    # stop date and time [yyyy-mm-dd HH:MM:SS]
    time_step: 3600.0                            # time step for integration [s; min=0.0]
 config_files:
    GOTM: GOTM/gotm.yaml                         # GOTM config file [yaml file]
@@ -27,7 +27,7 @@ input:
    meteo:
       file: LER_langtjern_met_local_1hr_2013-2018.csv # file with meteorological forcing data, with column headers according to LakeEnsemblR vocabulary [csv file]
    light:
-      Kw: 2.25 # light extinction coefficient [m-1]
+      Kw: 2.25                                  # light extinction coefficient [m-1 or csv file]
    ice:
       use: true                                 # turn on ice models? [true/false]
 inflows:
