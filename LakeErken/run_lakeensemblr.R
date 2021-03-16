@@ -6,7 +6,7 @@ cat("\f")
 # set working directory
 setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 
-
+# load library
 library(LakeEnsemblR)
 
 # Set config file
@@ -21,8 +21,7 @@ run_ensemble(config_file = config_file,
              return_list = FALSE, parallel = FALSE)
 
 
-## Plot model output using gotmtools/ggplot2
-# Extract names of all the variables in netCDF
-ncdf <- 'output/ensemble_output.nc'
-
+# name of the netcdf output file
+ncdf <- "output/ensemble_output.nc"
+# plot heatmap
 plot_heatmap(ncdf)

@@ -6,11 +6,11 @@ cat("\f")
 # set working directory
 setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 
-
+# load library
 library(LakeEnsemblR)
 
 # Set config file
-config_file <- 'LER_Langtjern_1hour.yaml'
+config_file <- "LER_Langtjern_1hour.yaml"
 model <- c("FLake", "GLM", "GOTM", "Simstrat", "MyLake")
 # 1. Example - creates directories with all model setup
 export_config(config_file = config_file, model = c("FLake", "GLM", "GOTM", "Simstrat", "MyLake"),
@@ -21,8 +21,7 @@ run_ensemble(config_file = config_file,
              return_list = FALSE, parallel = FALSE)
 
 
-## Plot model output using gotmtools/ggplot2
-# Extract names of all the variables in netCDF
-ncdf <- 'output/ensemble_output.nc'
-
+# path of the output netcdf file
+ncdf <- "output/ensemble_output.nc"
+# plot heatmap
 plot_heatmap(ncdf)
