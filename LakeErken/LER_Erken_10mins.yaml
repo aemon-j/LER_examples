@@ -21,6 +21,8 @@ observations:
       file:  # file with observed water temperature profiles, with column headers according to LakeEnsemblR vocabulary [csv file; if none use NULL or leave empty]
    ice_height:
       file:                                     # file with observed ice height, with column headers according to LakeEnsemblR vocabulary [csv file; if none use NULL or leave empty]
+   water_level:
+      file: NULL                                # file with observed water level in meter above bottom of the lake
 input:
    init_temp_profile:
       file: init_prof_Erken_1May2010.csv        # initial temperature profile [csv file; if none use NULL or leave empty; if empty/NULL, the observations file will be used]
@@ -33,8 +35,12 @@ input:
 inflows:
    use: false                                   # use in- and outflows? [true/false]
    file:                                        # file with inflow data, with column headers according to LakeEnsemblR vocabulary [csv file; must be provided if inflows -> use is true]
-   scale_param: 1.0                             # scaling factor for discharge in inflow, for example to correct for the percentage of catchment area drained by the inflow
-   mass-balance: true                           # enforce pseudo mass-balance by adding an artifical outflow for every inflow [true/false]
+   number_inflows: 0                            # number of inflows in the inflow file
+outflows:
+   use: false                                   # use outflows? [true/false]
+   file:                                        # file with outflow data, with column headers according to LakeEnsemblR vocabulary [csv file; must be provided if outflows -> use is true]
+   number_outflows: 0                           # number of outflows in the outflow file
+   outflow_lvl: -1                              # height of the outflow above the ground. If the outflow is a surface outflow use "-1". If there are more than one outflow in the outflow file, this must be a list with one value per outflow
 output:
    file: ensemble_output                        # name of output file, excluding extension
    format: netcdf                               # format [text/netcdf]
