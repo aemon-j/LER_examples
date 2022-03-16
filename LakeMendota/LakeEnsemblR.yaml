@@ -21,6 +21,8 @@ observations:
       file: LakeEnsemblR_wtemp_profile_standard.csv      # file with observed water temperature profiles, with column headers according to LakeEnsemblR vocabulary [if none use NULL]
    ice_height:
       file: NULL                                 # file with observed ice height, with column headers according to LakeEnsemblR vocabulary [if none use NULL]
+   water_level:
+      file: NULL                                 # file with observed water level in meter above bottom of the lake
 input:
    init_temp_profile:
       file: LakeEnsemblR_initial_standard.csv    # initial temperature profile. CSV file or empty. If empty, the observations file will be used.
@@ -31,10 +33,14 @@ input:
    ice:
       use: true                                  # turn on ice models? [default=true]
 inflows:
-   use: true                                     # use in- and outflows? Implemented for GLM, GOTM, Simstrat, MyLake
-   file: LakeEnsemblR_inflow_standard.csv        # file with inflow data, with column headers according to LakeEnsemblR vocabulary [if none use NULL]
-   scale_param: 1.0                              # scaling factor for discharge in inflow, for example to correct for the percentage of catchment area drained by the inflow
-   mass-balance: false                           # enforce pseudo mass-balance by adding an artifical outflow for every inflow
+   use: true                                     # use in- and outflows? [true/false]
+   file: LakeEnsemblR_inflow_standard.csv        # file with inflow data, with column headers according to LakeEnsemblR vocabulary [csv file; must be provided if inflows -> use is true]
+   number_inflows: 1                             # number of inflows in the inflow file
+outflows:
+   use: true                                     # use outflows? [true/false]
+   file: LakeEnsemblR_inflow_standard.csv        # file with outflow data, with column headers according to LakeEnsemblR vocabulary [csv file; must be provided if outflows -> use is true]
+   number_outflows: 1                            # number of outflows in the outflow file
+   outflow_lvl: -1                               # height of the outflow above the ground. If the outflow is a surface outflow use "-1". If there are more than one outflow in the outflow file, this must be a list with one value per outflow
 output:
    file: ensemble_output                         # path of output file, excluding extension
    format: netcdf                                # format [text, netcdf; default=netcdf]
@@ -46,10 +52,13 @@ output:
    variables:
       - temp
       - ice_height
+      - w_level
 scaling_factors:                                 # scaling factors to apply to meteorological input, either for all models or model-specific. If not specified, no scaling is applied. If both "all" and model-specific are specified for a certain model, only the model-specific scaling is applied.
    all:
       wind_speed: 1.0
       swr: 1.0
+      inflow: 1.0
+      outflow: 1.0
    Simstrat:
       wind_speed: 1.0
 model_parameters:
