@@ -70,6 +70,7 @@ model_parameters:
    GOTM:                                         # GOTM specific parameters
       k_min: 3.6E-6                              # minimum turbulent kinetic energy [m^2/s^2; min=0.0]
    Simstrat:                                     # Simstrat specific parameters
+      Simulation/Timestep s: 300
    MyLake:                                       # MyLake specific parameters
       Phys.par/C_shelter: 0.15                   # wind sheltering coefficient [min=0; max=1; if not specified, C_shelter=1.0-exp(-0.3*surface_area)]
 calibration:                                     # calibration section

@@ -73,6 +73,7 @@ model_parameters:                               # Parameters and scaling factors
       k_min: 2.7387e-06                         # minimum turbulent kinetic energy [m^2/s^2; min=0.0; default=1.00000000E-10]
    Simstrat:                                    # Simstrat specific parameters
       a_seiche: 0.001
+      Simulation/Timestep s: 300
    MyLake:                                      # MyLake specific parameters
       Phys.par/C_shelter: 0.15 
 calibration:                                    # calibration section
