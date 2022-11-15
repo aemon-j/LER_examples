@@ -6,3 +6,5 @@ Lough Feeagh data was collected by the Marine Institute. A permanently moored th
 Bathymetry of Lough Feeagh is also available from [here](http://data.marine.ie/geonetwork/srv/eng/catalog.search#/metadata/ie.marine.data:dataset.1226).
 
 More recent data can be requested or downloaded from the Marine Institute through www.marine.ie. The thermistor chain data are provided as a text file. 
+
+NOTE: Time step for Simstrat has been set to 300 s, due to more stable performance when using inflows
